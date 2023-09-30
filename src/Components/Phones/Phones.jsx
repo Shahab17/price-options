@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import { BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
+import { CirclesWithBar } from 'react-loader-spinner'
 
 
 
 const Phones = () => {
     const [phones, setPhones] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         /*  fetch('https://openapi.programming-hero.com/api/phones?search=iphone')
@@ -26,14 +27,31 @@ const Phones = () => {
                 })
                 console.log(phonesWithFakeData)
                 setPhones(phonesWithFakeData)
+                setLoading(false)
             })
 
     }, [])
 
     return (
-        <div className="container mx-auto my-10">
-            <h3 className="text-3xl">Phones: {phones.length} </h3>
-            <BarChart width={1200} height={400} data={phones}>
+        <div className="container mx-auto px-5 my-10    ">
+            {loading &&
+                <div className="flex justify-center ">
+                    <CirclesWithBar
+                        height="100"
+                        width="100"
+                        color="#4fa94d"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                        outerCircleColor=""
+                        innerCircleColor=""
+                        barColor=""
+                        ariaLabel='circles-with-bar-loading'
+                    />
+                </div>
+            }
+            <h3 className="text-3xl ">Phones: {phones.length} </h3>
+            <BarChart className="md:w-full" width={320} height={400} data={phones}>
                 <Bar dataKey="price" fill="#8884d8" />
                 <XAxis dataKey="name"></XAxis>
                 <YAxis></YAxis>

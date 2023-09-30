@@ -14,9 +14,9 @@ function App() {
 
       {/* <DaisyNav></DaisyNav> */}
       <Navbar></Navbar>
+      <Phones></Phones>
       <PriceOptions></PriceOptions>
       <LineChart></LineChart>
-      <Phones></Phones>
 
     </>
   )
