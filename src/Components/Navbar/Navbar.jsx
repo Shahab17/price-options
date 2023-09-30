@@ -1,7 +1,11 @@
+import { useState } from "react";
 import Link from "../Link/Link";
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
 
 const Navbar = () => {
+
+    const [open, setOpen] = useState(false)
 
     const routes = [
         { id: 1, path: '/', name: 'Home' },
@@ -12,13 +16,20 @@ const Navbar = () => {
     ];
 
 
-
-
     return (
-        <nav>
-            <ul className="md:flex ">
+
+        <nav className="bg-cyan-200 p-5">
+            <div onClick={() => setOpen(!open)} className="md:hidden text-2xl">
                 {
-                    routes.map(route => <Link key={route.id} route={route} ></Link> )
+                    open === true ?
+                        <AiOutlineClose></AiOutlineClose>
+                        : <AiOutlineMenu></AiOutlineMenu>
+                }
+
+            </div>
+            <ul className={` md:flex absolute md:static duration-1000 bg-cyan-200 p-5 rounded-b-xl ${open ? 'top-16': '-top-60'} `} >
+                {
+                    routes.map(route => <Link key={route.id} route={route} ></Link>)
                 }
             </ul>
 
