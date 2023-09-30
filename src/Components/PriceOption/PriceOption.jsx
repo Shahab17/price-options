@@ -13,11 +13,11 @@ const PriceOption = ({ option }) => {
 
             <h4 className="text-3xl my-5">{name} </h4>
             
-            <p className='space-y-2 text-start  flex-grow '>
+            <div className='space-y-2 text-start  flex-grow '>
                 {
                     features.map((feature, idx) => <ul key={idx} className='flex items-center ' > <AiFillCheckCircle className='mr-2'></AiFillCheckCircle> {feature} </ul>)
                 }
-            </p>
+            </div>
 
             <button className='btn bg-gradient-to-r from-cyan-100 to-blue-600    font-bold w-full my-5'>Buy</button>
 
